@@ -79,7 +79,7 @@ def days_above_threshold(data, product_key, threshold):
     #recorremos los datos#
     for day in data:
         #si las ventas del producto en ese día superan el umbral#
-        if day[product_key] > threshold
+        if day[product_key] > threshold:
             count += 1      #aumentamos el contador#
 
     #retorno cuantos días cumplieron la condición#
@@ -88,8 +88,18 @@ def days_above_threshold(data, product_key, threshold):
 #función para encontrar cuál producto fue el más vendido en total#
 def top_product(data):
     #calculo el total de cada producto usando la función que ya creamos#
-    total_a = total_sales_by_product(data, product_a)
-    pass
+    total_a = total_sales_by_product(data, "product_a")
+    total_b = total_sales_by_product(data, "product_b")
+    total_c = total_sales_by_product(data, "product_c")
+
+    #comparamos los totales y retornamos el producto con mayor venta#
+    if total_a > total_b and total_a > total_c:
+        return "product_a"
+    elif total_b > total_a and total_b > total_c:
+        return "product_b"
+    else:
+        return "product_c"
+    
 
 
 
