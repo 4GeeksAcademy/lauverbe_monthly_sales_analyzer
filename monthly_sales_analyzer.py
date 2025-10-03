@@ -112,7 +112,9 @@ print("Days when product_c exceeded 300 sales:", days_above_threshold(sales_data
 print("Product with highest total sales:", top_product(sales_data))
 
 
+
 #Día con peores ventas#
+
 #función para encontrar el día con la menor suma de ventas totales#
 def worst_selling_day(data):
     #guardo el peor día hasta ahora (actualización si se encuentra uno peor)
@@ -135,7 +137,9 @@ def worst_selling_day(data):
     return worst_day
 
 
+
 #Top de los 3 días con más ventas#
+
 #función para obtener los 3 días con mayores ventas totales#
 def top_3_days_by_sales(data):
     #creo una lista con tuplas: (ventas_totales, día)
@@ -157,4 +161,28 @@ def top_3_days_by_sales(data):
 
 
 
-        
+#Rango de ventas de un producto#
+
+#función para calcular el rango de ventas de un producto (máximo - mínimo)#
+def sales_range(data, product_key):
+    #extraigo solo las ventas del producto en una lista#
+    sales = [day[product_key] for day in data]
+
+    #calculo el valor máximo y mínimo de esa lista#
+    max_sale = max(sales)
+    min_sale = min(sales)
+
+    #resto para obtener el rango y lo retorno#
+    return max_sale - min_sale
+
+
+
+
+print("Day with lowest total sales:", worst_selling_day(sales_data))
+
+print("Top 3 best-selling days:")
+for top_day in top_3_days_by_sales(sales_data):
+    print(top_day)
+
+print("Sales range of product_b:", sales_range(sales_data, "product_b"))    
+
