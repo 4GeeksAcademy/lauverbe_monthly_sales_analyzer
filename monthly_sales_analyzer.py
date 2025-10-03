@@ -133,4 +133,28 @@ def worst_selling_day(data):
 
     #devuelvo el diccionario con los datos del peor día#
     return worst_day
+
+
+#Top de los 3 días con más ventas#
+#función para obtener los 3 días con mayores ventas totales#
+def top_3_days_by_sales(data):
+    #creo una lista con tuplas: (ventas_totales, día)
+    sales_with_days = []        
+
+    for day in data:
+        #calculo la suma de ventas de los 3 productos#
+        total = day["product_a"] + day["product_b"] + day["product_c"]   #creo una tupla porque quiero ordenar por el total pero mateniendo la información del día completo, no solo el número)
+        #guardo la tupla con (total, día completo)#
+        sales_with_days.append((total, day))
+
+    #ordeno la lista de mayor a menor por el total de ventas#
+    sales_with_days.sort(reverse=True, key=lambda x: x[0])    #uso sort, key y lambda porque le digo a python que ordene el primer valor de cada tupla (es decir, las ventas)#
+
+    #tomo los 3 primeros elementos(los días con más ventas)
+    top_3 = [item[1] for item in sales_with_days[:3]]
+
+    return top_3    #devuelvo la lista de los 3 mejores días#
+
+
+
         
