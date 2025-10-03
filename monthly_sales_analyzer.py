@@ -110,3 +110,27 @@ print("Average daily sales of product_b:", average_daily_sales(sales_data, "prod
 print("Day with highest total sales:", best_selling_day(sales_data))
 print("Days when product_c exceeded 300 sales:", days_above_threshold(sales_data, "product_c", 300))
 print("Product with highest total sales:", top_product(sales_data))
+
+
+#Día con peores ventas#
+#función para encontrar el día con la menor suma de ventas totales#
+def worst_selling_day(data):
+    #guardo el peor día hasta ahora (actualización si se encuentra uno peor)
+    worst_day = None
+
+    #iniciamos con un número muy alto para que cualquier suma real sea menor#
+    min_sales = float("inf")        #con inf comparo cualquier número real, así puedo actualizar el mínimo asegurándome de que cualquier venta total sea menor#
+
+    #recorremos todos los días en la lista#
+    for day in data:
+        #sumo las ventas de los 3 productos de ese día#
+        total = day["product_a"] + day["product_b"] + day["product_c"]
+
+        #si esta  suma es menor a la mínima encontrada hasta ahora#
+        if total < min_sales:
+            min_sales = total   #guardo la mínima nueva#
+            worst_day = day     #y el día correspondiente#
+
+    #devuelvo el diccionario con los datos del peor día#
+    return worst_day
+        
