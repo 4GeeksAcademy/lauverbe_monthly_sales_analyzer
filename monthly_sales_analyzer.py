@@ -172,7 +172,7 @@ def sales_range(data, product_key):
     max_sale = max(sales)
     min_sale = min(sales)
 
-    #resto para obtener el rango y lo retorno#
+    #resto para obtener el rango y lo retorno con max_sale - min sale#
     return max_sale - min_sale
 
 
