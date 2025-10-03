@@ -21,30 +21,76 @@ sales_data = [
     {"day": 19, "product_a": 229, "product_b": 133, "product_c": 241},
     {"day": 20, "product_a": 210, "product_b": 57, "product_c": 324}
 ]
-
+#función para calcular las ventas totales de un prodcuto específico#
 def total_sales_by_product(data, product_key):
-    """Calculates the total sales of a specific product in 30 days."""
-    pass
+    #Agrego una variable para acumular las ventas#
+    total = 0 
+    
+    #Recorro cada diccionario (día) dentro de la lista de datos#
+    for day in data:
+        #sumo la venta del producto específico usando su clave (product_key)
+        total += day[product_key]
+
+    #devolvemos el total acumulado#
+    return total
 
 
+#función para calcular el promedio de ventas diarias de un producto#
 def average_daily_sales(data, product_key):
-    """Calculates the average daily sales of a specific product."""
-    pass
+    #uso la función anterior para obtener el total#
+    total = total_sales_by_product(data, product_key)
+
+    #dividimos el total por la cantidad de días (20)#
+    average = total / len(data)
+
+    #Devuelvo el promedio#
+    return average
 
 
+
+#función para encontrar el día con la mayor suma de ventas totales#
 def best_selling_day(data):
-    """Finds the day with the highest total sales."""
-    pass
+    #variable para encontrar el día con más ventas (se actualizará)
+    best_day = None
 
+    #variable para registrar la cantidad máxima encontrada hasta ahora#
+    max_sales = 0 
 
+    #recorremos cada día#
+    for day in data:
+        #sumamos las ventas de los tres productos en ese día#
+        total = day["product_a"] + day["product_b"] + day["product_c"]
+
+        #si la suma es mayor a la anterior máxima,  actualizamos#
+        if total > max_sales:
+            max_sales = total
+            best_day = day      #guardo el día completo#
+
+    #retornamos el diccionario del mejor día#
+    return best_day
+    
+    
+   
+#función que cuenta cuantos días las ventas de un producto superan cierto umbral#
 def days_above_threshold(data, product_key, threshold):
-    """Counts how many days the sales of a product exceeded a given threshold."""
-    pass
+    #contador de días#
+    count = 0
+ 
+    #recorremos los datos#
+    for day in data:
+        #si las ventas del producto en ese día superan el umbral#
+        if day[product_key] > threshold
+            count += 1      #aumentamos el contador#
 
+    #retorno cuantos días cumplieron la condición#
+    return count       
 
+#función para encontrar cuál producto fue el más vendido en total#
 def top_product(data):
-    """Determines which product had the highest total sales in 30 days."""
+    #calculo el total de cada producto usando la función que ya creamos#
+    total_a = total_sales_by_product(data, product_a)
     pass
+
 
 
 
